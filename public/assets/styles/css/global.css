@@ -423,6 +423,9 @@ section {
   color: #fff;
 }
 
+#showMuisc {
+  padding-top: 4rem;
+}
 #showMuisc .container {
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   gap: 2rem;

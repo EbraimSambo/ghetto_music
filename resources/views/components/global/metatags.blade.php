@@ -11,3 +11,10 @@
 <meta name="isBrowserSupported" content="true">
 <meta property="og:title" content="Ghetto Music – baixe músicas de forma grátis: música para todos"/>
 <meta property="og:site_name" content="Ghetto Music"/>
+<meta name="revisit-after" content="3 days">
+<meta name="distribution" content="global">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="title" content="Ghetto Music, Baixe Músicas" />
+<meta http-equiv="refresh" content="900">
+<meta name="ICBM" content="41.40338, 2.17403">

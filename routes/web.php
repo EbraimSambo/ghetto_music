@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('/show', function () {
-    return view('pages.show-music');
-})->name('show');
+Route::get('/show',[PageController::class, 'showMusic'])->name('show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
