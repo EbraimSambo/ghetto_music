@@ -1,0 +1,97 @@
+@use "../utils/functions"
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@400;500;900&display=swap')
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css")
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    text-decoration: none
+    letter-spacing: 0.2rem
+    border: none
+    outline: none
+    list-style-type: none
+    font-family: 'Raleway', sans-serif
+
+
+html
+    font-size: 65.2%
+    overflow-x: hidden
+    @include functions.responsive(991px)
+        font-size: 55.5%
+    @include functions.responsive(479px)
+        font-size: 50%
+body
+    background: #000
+    width: 100%
+input, img
+    width: 100%
+    height: 100%
+img
+    object-fit: cover
+section
+    padding: 2rem 4%
+#appLayout
+    position: relative
+    display: grid
+    gap: .8rem
+    grid-template-columns: minmax(0,2fr) minmax(0,6fr)
+    @include functions.responsive(1264px)
+        grid-template-columns: minmax(0,1fr) minmax(0,3fr)
+    @include functions.responsive(1024px)
+        display: flex
+        flex-direction: column
+        gap: 2rem
+        justify-content: space-between
+    @include functions.responsive(489px)
+        grid-template-columns: repeat(1, 100%)
+    #rigth
+        background: #121212
+        position: sticky
+        z-index: 2000
+        top: 0
+        left: 0
+        bottom: 0
+        height: 100vh
+        padding: 2rem
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        a
+            color: #fff
+            font-weight: bold
+        @include functions.responsive(1024px)
+            box-shadow: 0 .2rem .5rem rgba(0,0,0,.4)
+            height: auto !important
+            #descApp
+                display: none
+    #left
+        min-height: 100vh
+        color: #fff
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        gap: .8rem
+        footer, main
+            background: #121212
+ 
+
+
+// Backgrounds
+.green
+    background: #00cc01 !important
+.purple
+    background: #5e07d1 !important
+.yellow
+    background: #f6b016!important
+.gradientYellow
+    background: linear-gradient(to right, rgb(255,255,0), rgb(246, 176, 22)) !important
+    color: #111 !important
+    font-weight: bold !important
+.blue
+    background: #0010D7 !important
+
+.blue, .gradientYellow
+    &:hover
+        background: #b8b8b83d !important
+        color: #fff  !important

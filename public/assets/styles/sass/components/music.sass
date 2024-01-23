@@ -1,0 +1,120 @@
+@use "../utils/functions"
+
+#musicContainer
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 0.99fr))
+    @include functions.responsive(479px)
+        grid-template-columns: repeat(1, 100%)
+    gap: 2rem
+    .box
+        position: relative
+        padding: 2rem
+        box-shadow: 0 .2rem .5rem rgba(0,0,0,.4)
+        background: #4b494956
+        border-radius: .3rem
+        &:hover
+            .download
+                display: block
+            h3, p
+                color: #fff
+        a
+            display: flex
+            flex-direction: column
+            gap: 1.2rem
+        .img
+            height: 200px
+            @include functions.responsive(479px)
+                height: auto
+            img
+                border-radius: .3rem
+                box-shadow: 0 .2rem .5rem rgba(0,0,0,.4)
+        h3,p
+            color: #ccc
+        h3
+            font-size: 1.5rem
+            margin-bottom: 0.9rem
+        p
+            font-size: 1.2rem
+            font-weight: 600
+        .download
+            position: absolute
+            bottom: 6%
+            right: 6%
+            font-size: 2.2rem
+            color: #FDF103 !important
+            display: none
+            animation: down .3s linear infinite alternate
+
+
+@keyframes down
+    100%
+        transform: translateY(-9px)
+
+#artists-container
+    display: grid
+    grid-template-columns: repeat(4,0.89fr)
+    align-items: center
+    gap: 1rem
+    @include functions.responsive(1024px)
+        grid-template-columns: repeat(3,0.89fr)
+    @include functions.responsive(768px)
+        grid-template-columns: repeat(2,0.89fr)
+    @include functions.responsive(506px)
+        grid-template-columns: repeat(1,0.89fr)
+        justify-content: center
+    .box
+        padding: 2rem
+        img
+            border-radius: 50%
+            border: .6rem solid #5e5c5c
+        h3
+            text-align: center
+            margin-top: 1.3rem
+            font-size: 1.5rem
+            color: #fff
+
+#showMuisc
+    .container
+        display: grid
+        grid-template-columns: minmax(0,2fr) minmax(0,3fr)
+        gap: 2rem
+        @include functions.responsive(909px)
+            display: flex
+            flex-direction: column
+        .cover
+            height: auto
+            width: 100%
+        .description
+            width: 400px
+            padding: 2rem .4rem
+            h1
+                font-size: 2.3rem
+            ul
+                display: flex
+                align-items: center
+                gap: 1.7rem
+                margin: 1.5rem 0
+                li
+                    background: #6b6767
+                    padding: .6rem 1rem
+                h2
+                    font-family: sans-serif !important
+                    font-size: 1.2rem
+                    span
+                        margin-left: 0.3rem
+            p
+                font-size: 1.3rem
+                line-height: 2.5rem
+.button-container
+    margin-top: 2rem
+    justify-content: center
+    display: flex
+    gap: 1.3rem
+    align-items: center
+    .btn-download, .share
+        box-shadow: 0 .2rem .5rem rgba(0,0,0,.4)
+        border-radius: .3rem
+        font-weight: bold !important
+        color: #fff
+        font-size: 1.2rem
+        padding: .9rem 2rem
