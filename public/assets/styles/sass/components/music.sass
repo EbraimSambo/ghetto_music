@@ -1,7 +1,21 @@
 @use "../utils/functions"
 
-#musicContainer
+// General Display Grid
+#artists-container,
+#musicContainer,
+#showMuisc .container
     display: grid
+
+#musicContainer .box a,
+.button-container,
+#showMuisc .container ul
+    display: flex
+
+.button-container,
+#artists-container
+    align-items: center
+
+#musicContainer
     grid-template-columns: repeat(auto-fit, minmax(20rem, 0.99fr))
     @include functions.responsive(479px)
         grid-template-columns: repeat(1, 100%)
@@ -18,7 +32,6 @@
             h3, p
                 color: #fff
         a
-            display: flex
             flex-direction: column
             gap: 1.2rem
         .img
@@ -51,9 +64,7 @@
         transform: translateY(-9px)
 
 #artists-container
-    display: grid
     grid-template-columns: repeat(4,0.89fr)
-    align-items: center
     gap: 1rem
     @include functions.responsive(1024px)
         grid-template-columns: repeat(3,0.89fr)
@@ -64,6 +75,9 @@
         justify-content: center
     .box
         padding: 2rem
+        &:hover
+            img
+                filter: blur(#1111)
         img
             border-radius: 50%
             border: .6rem solid #5e5c5c
@@ -75,7 +89,6 @@
 
 #showMuisc
     .container
-        display: grid
         grid-template-columns: minmax(0,2fr) minmax(0,3fr)
         gap: 2rem
         @include functions.responsive(909px)
@@ -90,7 +103,6 @@
             h1
                 font-size: 2.3rem
             ul
-                display: flex
                 align-items: center
                 gap: 1.7rem
                 margin: 1.5rem 0
@@ -108,9 +120,7 @@
 .button-container
     margin-top: 2rem
     justify-content: center
-    display: flex
     gap: 1.3rem
-    align-items: center
     .btn-download, .share
         box-shadow: 0 .2rem .5rem rgba(0,0,0,.4)
         border-radius: .3rem

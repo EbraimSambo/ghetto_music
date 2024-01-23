@@ -29,11 +29,13 @@ html {
 
 body {
   background: #000;
+}
+
+body, input, img {
   width: 100%;
 }
 
 input, img {
-  width: 100%;
   height: 100%;
 }
 
@@ -69,8 +71,15 @@ section {
     grid-template-columns: repeat(1, 100%);
   }
 }
-#appLayout #rigth {
+#appLayout #rigth, #appLayout #left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#appLayout #rigth, #appLayout #left footer, #appLayout main {
   background: #121212;
+}
+#appLayout #rigth {
   position: sticky;
   z-index: 2000;
   top: 0;
@@ -78,9 +87,6 @@ section {
   bottom: 0;
   height: 100vh;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 #appLayout #rigth a {
   color: #fff;
@@ -98,13 +104,7 @@ section {
 #appLayout #left {
   min-height: 100vh;
   color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   gap: 0.8rem;
-}
-#appLayout #left footer, #appLayout #left main {
-  background: #121212;
 }
 
 .green {
@@ -134,35 +134,68 @@ section {
   color: #fff !important;
 }
 
-#mainHeader {
+#mainHeader,
+#mainHeader nav,
+#mainHeader nav ul,
+#mainHeader nav form,
+#logo,
+#mainFooter,
+#mainFooter #mapSiteFooter,
+#mainFooter #links-social {
   display: flex;
+}
+
+#mainHeader,
+#mainHeader,
+#mainHeader nav,
+#mainHeader nav ul,
+#mainFooter {
   flex-direction: column;
+}
+
+#logo,
+#mainHeader nav form,
+#mainFooter,
+#mainFooter #mapSiteFooter,
+#mainFooter #links-social {
+  align-items: center;
+}
+
+#descApp,
+#mainHeader label, input,
+#mainHeader input::placeholder,
+#mainFooter a {
+  color: #fff;
+}
+
+#mainHeader {
   gap: 1.5rem;
 }
 @media (max-width: 1024px) {
   #mainHeader {
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     gap: none;
+  }
+  #mainHeader, #mainHeader nav {
+    flex-direction: row;
+    align-items: center;
   }
 }
 #mainHeader nav {
-  display: flex;
-  flex-direction: column;
   gap: 1.3rem;
+}
+#mainHeader nav, #mainHeader nav form {
   width: 100%;
+}
+#mainHeader nav form, #mainHeader nav ul li a {
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
 }
 @media (max-width: 1024px) {
   #mainHeader nav {
-    flex-direction: row;
-    align-items: center;
     justify-content: flex-end;
   }
 }
 #mainHeader nav ul {
-  display: flex;
-  flex-direction: column;
   gap: 1.8rem;
   margin-top: 1.2rem;
 }
@@ -176,7 +209,6 @@ section {
   font-size: 1.4rem;
   padding: 0.9rem 1.2rem;
   background: rgba(204, 204, 204, 0.2392156863);
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 0.3rem;
 }
 #mainHeader nav ul li a:hover {
@@ -184,14 +216,10 @@ section {
 }
 #mainHeader nav form {
   margin-top: 2rem;
-  width: 100%;
   height: 40px;
   border: 0.1rem solid #fff;
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 0.6rem;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 0 1rem;
 }
 @media (max-width: 1024px) {
@@ -201,23 +229,17 @@ section {
   }
 }
 #mainHeader nav form label {
-  color: #fff;
   font-size: 1.3rem;
   cursor: pointer;
 }
+#mainHeader nav form input, #mainHeader nav form input::placeholder {
+  font-size: 1.1rem;
+}
 #mainHeader nav form input {
   background: transparent;
-  font-size: 1.1rem;
-  color: #fff;
-}
-#mainHeader nav form input::placeholder {
-  font-size: 1.1rem;
-  color: #fff;
 }
 
 #logo {
-  display: flex;
-  align-items: center;
   gap: 0.1rem;
   font-size: 2rem;
   font-weight: bold;
@@ -226,7 +248,7 @@ section {
   height: 35px;
   width: 35px;
 }
-@media (max-width: 909px) {
+@media (max-width: 690px) {
   #logo span {
     display: none;
   }
@@ -242,32 +264,23 @@ section {
 }
 
 #descApp {
-  color: #fff;
   font-size: 1.1rem;
   text-align: center;
 }
 
 #mainFooter {
   padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
-  align-items: center;
   text-align: center;
 }
 #mainFooter h2 {
   font-size: 1.7rem;
 }
-#mainFooter a {
-  color: #fff;
-}
 #mainFooter a span {
   display: inline !important;
 }
 #mainFooter #mapSiteFooter, #mainFooter #links-social {
-  display: flex;
   gap: 1.2rem;
-  align-items: center;
 }
 @media (max-width: 775px) {
   #mainFooter #mapSiteFooter {
@@ -292,8 +305,24 @@ section {
   margin-bottom: 2rem;
 }
 
-#musicContainer {
+#artists-container,
+#musicContainer,
+#showMuisc .container {
   display: grid;
+}
+
+#musicContainer .box a,
+.button-container,
+#showMuisc .container ul {
+  display: flex;
+}
+
+.button-container,
+#artists-container {
+  align-items: center;
+}
+
+#musicContainer {
   grid-template-columns: repeat(auto-fit, minmax(20rem, 0.99fr));
   gap: 2rem;
 }
@@ -316,7 +345,6 @@ section {
   color: #fff;
 }
 #musicContainer .box a {
-  display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
@@ -359,9 +387,7 @@ section {
   }
 }
 #artists-container {
-  display: grid;
   grid-template-columns: repeat(4, 0.89fr);
-  align-items: center;
   gap: 1rem;
 }
 @media (max-width: 1024px) {
@@ -383,6 +409,9 @@ section {
 #artists-container .box {
   padding: 2rem;
 }
+#artists-container .box:hover img {
+  filter: blur(rgba(17, 17, 17, 0.0666666667));
+}
 #artists-container .box img {
   border-radius: 50%;
   border: 0.6rem solid #5e5c5c;
@@ -395,7 +424,6 @@ section {
 }
 
 #showMuisc .container {
-  display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   gap: 2rem;
 }
@@ -417,7 +445,6 @@ section {
   font-size: 2.3rem;
 }
 #showMuisc .container .description ul {
-  display: flex;
   align-items: center;
   gap: 1.7rem;
   margin: 1.5rem 0;
@@ -441,9 +468,7 @@ section {
 .button-container {
   margin-top: 2rem;
   justify-content: center;
-  display: flex;
   gap: 1.3rem;
-  align-items: center;
 }
 .button-container .btn-download, .button-container .share {
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
