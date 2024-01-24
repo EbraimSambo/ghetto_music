@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MusicController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('/show',[PageController::class, 'showMusic'])->name('show');
+
+Route::resource('/music', MusicController::class,['create','store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -12,11 +12,11 @@
    <p> Todos direitos reservados 2024 - {{ date('Y')}} &copy; </p>
 
    <ul id="mapSiteFooter">
-      <li><a href="">Home</a></li>
+      <li><a href="{{ route('home')}}">Home</a></li>
       <li><a href="">Sobre</a></li>
       <li><a href="">Politicas e Privacidade</a></li>
       <li><a href="">Termos de Uso</a></li>
-      <li><a href="">Admim</a></li>
+      <li><a href="{{ route('music.create')}}">Admim</a></li>
    </ul>
 
    <ul id="links-social">

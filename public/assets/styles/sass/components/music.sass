@@ -8,11 +8,14 @@
 
 #musicContainer .box a,
 .button-container,
-#showMuisc .container ul
+#showMuisc .container ul,
+#createMusic,
+#createMusic form
     display: flex
 
 .button-container,
-#artists-container
+#artists-container,
+#createMusic
     align-items: center
 
 #musicContainer
@@ -129,3 +132,49 @@
         color: #fff
         font-size: 1.2rem
         padding: .9rem 2rem
+
+
+#createMusic
+    justify-content: center
+    padding: 4rem
+    .container
+        max-width: 700px
+        width: 100%
+        border: 1px solid #fff
+        padding: 2rem
+        h1
+            font-size: 1.8rem
+            margin-bottom: 1rem
+        form
+            flex-direction: column
+            border: 1px solid #fff
+            padding: 2rem
+            gap: 2rem
+            .input-group
+                width: 100%
+            label
+                font-size: 1.3rem
+            input, select
+                height: 40px
+                padding: 0 .9rem
+            input, textarea, select
+                margin-top: 1rem               
+            input[type="text"], textarea
+                background: #afaaaa2d
+            textarea
+                height: 140px
+                resize: none
+                padding: 0.4rem
+                
+            textarea, select
+                display: block
+                width: 100%
+            select, select option
+                font-weight: bold
+            button
+                padding: .8rem 2rem
+            
+.inputError
+    padding: 0.7rem
+    font-size: 1.1rem
+    color: #c53b3b

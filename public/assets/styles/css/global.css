@@ -39,6 +39,10 @@ input, img {
   height: 100%;
 }
 
+button, input[type=submit] {
+  cursor: pointer;
+}
+
 img {
   object-fit: cover;
 }
@@ -313,12 +317,15 @@ section {
 
 #musicContainer .box a,
 .button-container,
-#showMuisc .container ul {
+#showMuisc .container ul,
+#createMusic,
+#createMusic form {
   display: flex;
 }
 
 .button-container,
-#artists-container {
+#artists-container,
+#createMusic {
   align-items: center;
 }
 
@@ -480,6 +487,64 @@ section {
   color: #fff;
   font-size: 1.2rem;
   padding: 0.9rem 2rem;
+}
+
+#createMusic {
+  justify-content: center;
+  padding: 4rem;
+}
+#createMusic .container {
+  max-width: 700px;
+  width: 100%;
+  border: 1px solid #fff;
+  padding: 2rem;
+}
+#createMusic .container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+#createMusic .container form {
+  flex-direction: column;
+  border: 1px solid #fff;
+  padding: 2rem;
+  gap: 2rem;
+}
+#createMusic .container form .input-group {
+  width: 100%;
+}
+#createMusic .container form label {
+  font-size: 1.3rem;
+}
+#createMusic .container form input, #createMusic .container form select {
+  height: 40px;
+  padding: 0 0.9rem;
+}
+#createMusic .container form input, #createMusic .container form textarea, #createMusic .container form select {
+  margin-top: 1rem;
+}
+#createMusic .container form input[type=text], #createMusic .container form textarea {
+  background: rgba(175, 170, 170, 0.1764705882);
+}
+#createMusic .container form textarea {
+  height: 140px;
+  resize: none;
+  padding: 0.4rem;
+}
+#createMusic .container form textarea, #createMusic .container form select {
+  display: block;
+  width: 100%;
+}
+#createMusic .container form select, #createMusic .container form select option {
+  font-weight: bold;
+}
+#createMusic .container form button {
+  padding: 0.8rem 2rem;
+}
+
+.inputError {
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  color: #c53b3b;
 }
 
 /*# sourceMappingURL=global.css.map */
