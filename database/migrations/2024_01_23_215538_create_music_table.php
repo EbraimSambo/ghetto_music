@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->longText('description');
             $table->string('tags');
-            //$table->integer('like');
+            $table->string('slug')->unique()->nullable();
             $table->string('path_cover');
             $table->string('path_music');
             $table->string('category');

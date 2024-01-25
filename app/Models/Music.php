@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Support\Str;
 class Music extends Model
 {
     use HasFactory;
@@ -17,7 +17,8 @@ class Music extends Model
         'path_music',
         'category',
         'artist',
-        'user_id'
+        'user_id',
+        'slug'
     ];
 
     public function user(): BelongsTo
@@ -35,5 +36,14 @@ class Music extends Model
     public function artist(): BelongsTo
     {
         return $this->belongsTo(Artist::class, 'artist_id', 'id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->slug = Str::random(10);
+        });
     }
 }

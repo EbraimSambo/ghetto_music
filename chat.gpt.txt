@@ -1,0 +1,105 @@
+Olá! O Laravel é um framework PHP que permite criar aplicações web de forma rápida e eficiente. Para criar um sistema de visualização profissional com Laravel que guarda as views no banco de dados, você pode seguir os seguintes passos:
+
+1. Crie um banco de dados MySQL e configure o arquivo `.env` com as credenciais do banco de dados.
+2. Crie um modelo para as views que você deseja armazenar no banco de dados. Por exemplo, se você deseja armazenar a view `home.blade.php`, crie um modelo `HomeView` que estenda a classe `Model`.
+3. Crie uma rota que renderize a view e salve-a no banco de dados usando o modelo criado anteriormente. Por exemplo, você pode criar uma rota `/home` que renderize a view `home.blade.php` e salve-a no banco de dados usando o modelo `HomeView`.
+4. Para recuperar a view do banco de dados, você pode criar uma rota que busque a view no banco de dados usando o modelo criado anteriormente e renderize-a usando o método `view()` do Laravel.
+
+Aqui está um exemplo de código que pode ajudá-lo a começar:
+
+```php
+// Crie um modelo para a view
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class HomeView extends Model
+{
+    protected $table = 'views';
+    protected $fillable = ['name', 'content'];
+}
+
+// Crie uma rota que renderize a view e salve-a no banco de dados
+Route::get('/home', function () {
+    $view = view('home')->render();
+    $homeView = new HomeView();
+    $homeView->name = 'home';
+    $homeView->content = $view;
+    $homeView->save();
+    return $view;
+});
+
+// Crie uma rota que busque a view no banco de dados e renderize-a
+Route::get('/home/{id}', function ($id) {
+    $homeView = HomeView::find($id);
+    return view()->make($homeView->content);
+});
+
+
+Para criar um campo no Laravel que recebe um slug aleatório, você pode usar o pacote `Str::random()` do Laravel. Este pacote gera uma string aleatória com o comprimento especificado. Aqui está um exemplo de código que pode ajudá-lo a começar:
+
+```php
+// Crie uma migração para adicionar o campo slug à tabela
+php artisan make:migration add_slug_to_table --table=nome_da_tabela
+
+// Adicione o seguinte código à migração
+public function up()
+{
+    Schema::table('nome_da_tabela', function (Blueprint $table) {
+        $table->string('slug')->unique()->nullable();
+    });
+}
+
+public function down()
+{
+    Schema::table('nome_da_tabela', function (Blueprint $table) {
+        $table->dropColumn('slug');
+    });
+}
+
+// Crie um modelo para a tabela
+php artisan make:model NomeDoModelo
+
+// Adicione o seguinte código ao modelo
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+class NomeDoModelo extends Model
+{
+    protected $fillable = ['campo1', 'campo2', 'slug'];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->slug = Str::random(10);
+        });
+    }
+}
+
+```
+
+Este código adiciona um campo `slug` à tabela especificada e cria um modelo para a tabela. O método `boot()` é usado para gerar um slug aleatório sempre que um novo registro é criado.
+
+Espero que isso ajude! Se você tiver alguma dúvida, não hesite em perguntar.
+
+Origem: conversação com o Bing, 25/01/2024
+(1) string - Laravel Slugs with Str::slug - Stack Overflow. https://stackoverflow.com/questions/17400788/laravel-slugs-with-strslug.
+(2) How to make / generate slug in laravel 8 - Funda of Web IT. https://www.fundaofwebit.com/post/how-to-generate-slug-in-laravel-8.
+(3) How to Create Custom Slug using Title in Laravel. https://dev.to/morcosgad/how-to-create-custom-slug-using-title-in-laravel-4dh3.
+(4) undefined. http://www.example.com/courses/1.
+(5) undefined. http://www.example.com/courses/this-course.
+(6) undefined. http://www.example.com/courses/it-training/mcse.
+(7) undefined. http://www.example.com/courses/1/my-laravel-course.
+
+Espero que isso ajude! Se você tiver alguma dúvida, não hesite em perguntar.
+
+Origem: conversação com o Bing, 25/01/2024
+(1) Introdução ao Laravel - Parte 06: views e template engine. https://www.jlgregorio.com.br/2022/01/03/introducao-ao-laravel-framework-parte-06-view/.
+(2) Como criar uma base de dados automaticamente no Laravel com todas as .... https://pt.stackoverflow.com/questions/387545/como-criar-uma-base-de-dados-automaticamente-no-laravel-com-todas-as-tabelas.
+(3) Views - Laravel 10.x - The PHP Framework For Web Artisans. https://laravel.com/docs/10.x/views.
+(4) undefined. https://laravel.com/docs/8.x/blade.
+(5) undefined. https://laravel.com/docs/5.8/installation.

@@ -17,11 +17,12 @@ class PageController extends Controller
         ]);
     }
 
-    public function showMusic($id) {
+    public function showMusic($slug) {
 
+        $music = Music::where('slug', $slug)->firstOrFail();
         return view('pages.show-music',[
-            'music' => Music::find($id),
-            'download' => Download::all()->where('music_id',$id)
+            'music' => $music,
+            'download' => Download::all()->where('music_id',$music->id)
         ]);
     }
 

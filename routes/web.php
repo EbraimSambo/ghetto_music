@@ -20,7 +20,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('/show/{id}',[PageController::class, 'showMusic'])->name('show');
 
-Route::get('/download/{id}',[PageController::class, 'downloadMusic'])->name('download');
+Route::get('/download/{slug}',[PageController::class, 'downloadMusic'])->name('download');
 
 
 Route::get('/dashboard', function () {

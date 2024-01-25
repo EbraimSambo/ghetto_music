@@ -1,6 +1,6 @@
 @props(['music'])
 <article class="box">
-    <a href="{{ route('show', $music->id) }}">
+    <a href="{{ route('show', $music->slug) }}">
         <div class="img">
             <picture>
                 <img src="{{ asset('storage/'.$music->path_cover) }}" alt="">
