@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('user_id');
             $table->longText('description');
+            $table->string('search');
             $table->string('tags');
             $table->string('slug')->unique()->nullable();
             $table->string('path_cover');

@@ -42,6 +42,7 @@ class MusicController extends Controller
                 'user_id' => auth()->user()->id,
                 'tags' => implode(', ',$spar),
                 'artist' => $request->artist,
+                'search' => $request->title .' ' . $request->artist,
                 'description' => $request->description,
                 'category' => $request->category,
             ];
@@ -83,7 +84,7 @@ class MusicController extends Controller
      */
     public function edit(Music $music)
     {
-        //
+        return view('create.edit', compact('music'));
     }
 
     /**
@@ -91,7 +92,31 @@ class MusicController extends Controller
      */
     public function update(UpdateMusicRequest $request, Music $music)
     {
-        //
+    
+            $spar = explode(' ',$request->tags);
+            $form = [
+                'title' => Str::of($request->title)->title(),
+                'path_cover' => $request->path_cover,
+                'user_id' => $request->path_cover,
+                'user_id' => auth()->user()->id,
+                'tags' => implode(', ',$spar),
+                'artist' => $request->artist,
+                'search' => $request->title .' ' . $request->artist,
+                'description' => $request->description,
+                'category' => $request->category,
+            ];
+
+            if (empty($request->hasFile('path_music')) && empty($request->hasFile('path_cover'))) {
+                $form['path_music'] = $music->path_music;
+                $form['path_cover'] = $music->path_cover;
+             }else{
+                $form['path_music'] = $request->file('path_music')->store('musics', 'public');
+                $form['path_cover'] = $request->file('path_cover')->store('coveres', 'public');
+             }
+
+            $music->update($form);
+
+        return back();
     }
 
     /**
@@ -99,6 +124,6 @@ class MusicController extends Controller
      */
     public function destroy(Music $music)
     {
-        //
+        $music->delete();
     }
 }

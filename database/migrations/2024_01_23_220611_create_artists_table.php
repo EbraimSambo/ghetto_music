@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('music_id');
             $table->string('artist');
+            $table->string('artist_cover')->nullable();
             $table->timestamps();
         });
     }

@@ -123,6 +123,10 @@ section {
   background: #f6b016 !important;
 }
 
+.yellow_two {
+  color: #e69d00;
+}
+
 .gradientYellow {
   background: linear-gradient(to right, rgb(255, 255, 0), rgb(246, 176, 22)) !important;
   color: #111 !important;
@@ -273,7 +277,7 @@ section {
 }
 
 .small {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .medium {
@@ -488,6 +492,7 @@ section {
 }
 #showMuisc .container .description h2 {
   color: #e69d00;
+  font-size: 1.2rem;
 }
 #showMuisc .container .description ul {
   flex-direction: column;
@@ -523,6 +528,7 @@ section {
 #showMuisc .container .description #tags .container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   flex-direction: row;
 }

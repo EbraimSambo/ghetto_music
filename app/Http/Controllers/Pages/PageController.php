@@ -45,7 +45,8 @@ class PageController extends Controller
     public function search() {
         
         return view('pages.search',[
-            'musics' => Music::latest()->filter(request(['search','tag','category']))->paginate(7)
+            'musics' => Music::latest()->filter(request(['search','tag','category']))->paginate(7),
+            'suegets' => Music::inRandomOrder()->take(20)->get(),
         ]);
     }
 

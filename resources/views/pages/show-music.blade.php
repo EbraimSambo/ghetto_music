@@ -5,13 +5,13 @@
 
     @empty(!$artist)
         <section id="similar">
-            <h2 class="heading">Obras de {{$music->artist }} </h2>
+            <h2 class="heading">Obras de: <span class="yellow_two">{{$music->artist }}</span>  </h2>
             <x-music.musics :musics="$artist"  />
         </section>  
     @endempty
 
     <section id="similar">
-        <h2 class="heading">Semelhantes a {{$music->title }} </h2>
+        <h2 class="heading">Semelhantes a música: <span class="yellow_two">{{$music->title }}</span> </h2>
         <x-music.musics :musics="$similar"  />
     </section>
 

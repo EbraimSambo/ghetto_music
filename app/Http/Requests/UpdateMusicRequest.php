@@ -22,7 +22,21 @@ class UpdateMusicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'tags' => ['required', 'string'],
+            'artist' => ['required', 'string'],
         ];
     }
+
+ 
+    public function messages()
+    {
+        return [
+            'title.required' => 'O titulo da música é obrigatório.',
+            'artist.required' => 'Falta colocar o nome do artista.',
+            'tags.required' => 'Esqueceu de criar #Tags para está música.',
+            'description.required' => 'A descrição da música é obrigatório.',
+        ];
+    }   
 }

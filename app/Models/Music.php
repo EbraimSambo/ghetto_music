@@ -19,7 +19,8 @@ class Music extends Model
         'category',
         'artist',
         'user_id',
-        'slug'
+        'slug',
+        'search'
     ];
 
     public function user(): BelongsTo
@@ -58,7 +59,7 @@ class Music extends Model
             $query->where('category', 'like', '%' . request('category') . '%' );
         }
         if ($filters['search'] ?? false) {
-            $query->where('title', 'like', '%' . request('search') . '%' );
+            $query->where('search', 'like', '%' . request('search') . '%' );
         }
     }
 }

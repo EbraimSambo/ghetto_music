@@ -1,11 +1,11 @@
 <x-layout titlePage="Home">
 
-    @empty(!$tops)
+    @if(!count($tops) == 0 )
         <section id="start_home">
             <h2>Os Mais Baixados</h2>
             <x-music.musics :musics="$tops"  />
         </section>        
-    @endempty
+    @endif
 
     <section id="start_home">
         <h2>Causando Empacto</h2>

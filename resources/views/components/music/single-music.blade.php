@@ -22,7 +22,7 @@
                 <li> <span class="desc">Publicado: </span> <span class="resp">{{$music->created_at->diffForHumans()}}</span> </li>
                 <li>
                     <span class="desc">Downloads:</span> 
-                    @if (count($download) === 0)
+                    @if (count($download) == 0)
                         <span class="resp"> Nenhun Download</span> 
                     @else
                         <span class="resp d"> {{count($download)}}</span> 
