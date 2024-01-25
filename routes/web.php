@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('/show',[PageController::class, 'showMusic'])->name('show');
+Route::get('/show/{id}',[PageController::class, 'showMusic'])->name('show');
 
-Route::resource('/music', MusicController::class,['create','store']);
+Route::get('/download/{id}',[PageController::class, 'downloadMusic'])->name('download');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,6 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth')->group(function() {
+    Route::resource('/music', MusicController::class,['create','store']);
 });
 
 require __DIR__.'/auth.php';

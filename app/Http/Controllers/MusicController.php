@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Music;
 use App\Http\Requests\StoreMusicRequest;
 use App\Http\Requests\UpdateMusicRequest;
+use App\Models\Artist;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class MusicController extends Controller
 {
@@ -29,11 +32,13 @@ class MusicController extends Controller
      */
     public function store(StoreMusicRequest $request)
     {
+           DB::transaction(function () use ($request){
 
             $form = [
                 'title' => $request->title,
                 'path_cover' => $request->path_cover,
-                'path_music' => $request->path_music,
+                'user_id' => $request->path_cover,
+                'user_id' => auth()->user()->id,
                 'tags' => $request->tags,
                 'artist' => $request->artist,
                 'description' => $request->description,
@@ -45,10 +50,23 @@ class MusicController extends Controller
                 $form['path_cover'] = $request->file('path_cover')->store('coveres', 'public');
              }
 
+            $music = new Music($form);
+            $music->save();
 
-             Music::create($form);
+            $artist = new Artist();
+            $artist->artist = $request->artist;
+            $artist->music_id = $music->id;
+            $artist->save();
 
-        return back();
+            $category = new Category();
+            $category->category = $request->category;
+            $category->music_id = $music->id;
+            $category->save();
+
+             });
+
+
+        return back()->with('successCreate', 'Dados criado e evnviado com sucesso');
     }
 
     /**

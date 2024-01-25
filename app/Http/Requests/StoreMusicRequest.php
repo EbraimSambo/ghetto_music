@@ -28,7 +28,7 @@ class StoreMusicRequest extends FormRequest
             'tags' => ['required', 'string'],
             'artist' => ['required', 'string'],
             'path_cover' => ['required', 'file','mimes:jpeg,png,jpg','max:2048'],
-            'path_music' => ['required','file','mimes:mp3,mp4,wav','max:2048'],
+            'path_music' => ['required','file','mimes:mp3,mp4,wav','max:4734360'],
         ];
     }
 

@@ -1,3 +1,7 @@
+@props(['musics'])
 <div id="musicContainer">
-    <x-music.card-music />
+    @foreach ($musics as $music)
+        <x-music.card-music :music="$music" />        
+    @endforeach
+
 </div>

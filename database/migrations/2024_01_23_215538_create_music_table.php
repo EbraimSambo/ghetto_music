@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('music', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->foreignId('user_id');
             $table->longText('description');
             $table->string('tags');
             //$table->integer('like');

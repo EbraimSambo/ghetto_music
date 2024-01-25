@@ -1,19 +1,20 @@
+@props(['music'])
 <article class="box">
-    <a href="/">
+    <a href="{{ route('show', $music->id) }}">
         <div class="img">
             <picture>
-                <img src="https://is1-ssl.mzstatic.com/image/thumb/Features116/v4/0c/f7/04/0cf704f4-428c-0fab-0cd7-0fcb78e315b2/850738a9-43d3-449f-878a-fe2f35fbb413.png/316x316SC.DN01.webp?l=en-GB" alt="">
+                <img src="{{ asset('storage/'.$music->path_cover) }}" alt="">
             </picture>
         </div>
         <div class="legend">
-            <h3>Quero Tudo</h3>
-            <p>Nga, Masta</p>
+            <h3> {{ $music->title }} </h3>
+            <p>{{ $music->artist }}</p>
         </div>
         <div class="download bi-arrow-down-circle-fill"></div>
     </a>
 </article>
 
-<article class="box">
+{{-- <article class="box">
     <a href="/">
         <div class="img">
             <picture>
@@ -86,4 +87,4 @@
         </div>
         <div class="download bi-arrow-down-circle-fill"></div>
     </a>
-</article>
+</article> --}}
