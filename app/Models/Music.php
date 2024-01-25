@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+
 class Music extends Model
 {
     use HasFactory;
@@ -40,10 +41,24 @@ class Music extends Model
 
     public static function boot()
     {
-        parent::boot();
+         parent::boot();
 
         static::creating(function ($model) {
-            $model->slug = Str::random(10);
+            $model->slug = Str::orderedUuid();//.'-' .now();
         });
+
+    }
+
+
+    public function scopeFilter($query, array $filters){
+        if ($filters['tag'] ?? false) {
+            $query->where('tags', 'like', '%' . request('tag') . '%' );
+        }
+        if ($filters['category'] ?? false) {
+            $query->where('category', 'like', '%' . request('category') . '%' );
+        }
+        if ($filters['search'] ?? false) {
+            $query->where('title', 'like', '%' . request('search') . '%' );
+        }
     }
 }

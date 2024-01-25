@@ -1,4 +1,9 @@
 @props(['music','download'])
+
+@php
+    $tagsSearch = explode(',', $music->tags)
+@endphp
+
 <div class="container">
        <div class="division">
             <div class="cover">
@@ -11,28 +16,32 @@
             </div>  
        </div>
         <div class="description">
-            <h1> {{$music->title}} </h1>
             <ul>
+                <li> <h1>{{$music->title}}</h1> </li>
+                <li> <span class="desc">Artista:</span> <h2>{{$music->artist}}</h2> </li>
+                <li> <span class="desc">Publicado: </span> <span class="resp">{{$music->created_at->diffForHumans()}}</span> </li>
                 <li>
-                    <h2><span class="bi-eye-fill"></span> 200</h2>
+                    <span class="desc">Downloads:</span> 
+                    @if (count($download) === 0)
+                        <span class="resp"> Nenhun Download</span> 
+                    @else
+                        <span class="resp d"> {{count($download)}}</span> 
+                    @endif 
                 </li>
                 <li>
-                    <h2><span class="bi-calendar-event"></span> {{ $music->created_at->diffForHumans() }} </h2>
+                    <span class="desc">Descrição:</span>
+                    <span class="resp">{{$music->description}}</span>
                 </li>
-                <li>
-                    <h2><span class="bi-arrow-down-square"></span> 
-                       {{ count($download) }}
-                    </h2>
+                <li id="tags">
+                    <ul class="container">
+                        <li class="desc">Tags:</li>
+                        @foreach ($tagsSearch as $tag)
+                        <a class="blue" href="{{ route('search', 'tag='.$tag) }}"> {{$tag}} </a>        
+                        @endforeach  
+                    </ul>
                 </li>
             </ul>
-            <p>
-                Lorem ipsum dolor sit amet consectetur
-                 adipisicing elit. Molestiae numquam
-                  sit suscipit nobis veniam nemo laudantium 
-                  doloremque culpa earum sed, minima at eum. 
-                  Et consequuntur odio fugit facere qui nulla?
-            </p>
         </div>
-
-
 </div>
+
+

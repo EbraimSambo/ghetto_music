@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateMusicRequest;
 use App\Models\Artist;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class MusicController extends Controller
 {
@@ -33,13 +34,13 @@ class MusicController extends Controller
     public function store(StoreMusicRequest $request)
     {
            DB::transaction(function () use ($request){
-
+            $spar = explode(' ',$request->tags);
             $form = [
-                'title' => $request->title,
+                'title' => Str::of($request->title)->title(),
                 'path_cover' => $request->path_cover,
                 'user_id' => $request->path_cover,
                 'user_id' => auth()->user()->id,
-                'tags' => $request->tags,
+                'tags' => implode(', ',$spar),
                 'artist' => $request->artist,
                 'description' => $request->description,
                 'category' => $request->category,

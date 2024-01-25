@@ -20,6 +20,12 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('/show/{id}',[PageController::class, 'showMusic'])->name('show');
 
+Route::get('/musics',[PageController::class, 'musicAll'])->name('musicAll');
+
+Route::get('/artists',[PageController::class, 'musicAll'])->name('artists');
+
+Route::get('/search',[PageController::class, 'search'])->name('search');
+
 Route::get('/download/{slug}',[PageController::class, 'downloadMusic'])->name('download');
 
 

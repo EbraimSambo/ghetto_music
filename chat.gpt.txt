@@ -103,3 +103,20 @@ Origem: conversação com o Bing, 25/01/2024
 (3) Views - Laravel 10.x - The PHP Framework For Web Artisans. https://laravel.com/docs/10.x/views.
 (4) undefined. https://laravel.com/docs/8.x/blade.
 (5) undefined. https://laravel.com/docs/5.8/installation.
+
+
+
+            <h1> {{$music->title}} </h1>
+            <ul>
+                <li>
+                    <h2><span class="bi-eye-fill"></span> 200</h2>
+                </li>
+                <li>
+                    <h2><span class="bi-calendar-event"></span> {{ $music->created_at->diffForHumans() }} </h2>
+                </li>
+                <li>
+                    <h2><span class="bi-arrow-down-square"></span> 
+                       {{ count($download) }}
+                    </h2>
+                </li>
+            </ul>

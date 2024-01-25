@@ -267,6 +267,19 @@ section {
   color: transparent;
 }
 
+.heading {
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+.medium {
+  font-size: 1.2rem;
+}
+
 #descApp {
   font-size: 1.1rem;
   text-align: center;
@@ -308,10 +321,14 @@ section {
   font-size: 3rem;
   margin-bottom: 2rem;
 }
+#start_home .heading, #artist-home .heading {
+  font-size: 1.7rem;
+}
 
 #artists-container,
 #musicContainer,
-#showMuisc .container {
+#showMuisc .container,
+#searchContainer {
   display: grid;
 }
 
@@ -330,10 +347,15 @@ section {
 }
 
 #musicContainer {
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 0.99fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
-@media (max-width: 479px) {
+@media (max-width: 805px) {
+  #musicContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
   #musicContainer {
     grid-template-columns: repeat(1, 100%);
   }
@@ -371,12 +393,15 @@ section {
   color: #ccc;
 }
 #musicContainer .box h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.9rem;
+  font-size: 1.3rem;
 }
 #musicContainer .box p {
-  font-size: 1.2rem;
   font-weight: 600;
+}
+#musicContainer .box .legend {
+  display: flex;
+  gap: 0.7rem;
+  flex-direction: column;
 }
 #musicContainer .box .download {
   position: absolute;
@@ -434,45 +459,85 @@ section {
   padding-top: 4rem;
 }
 #showMuisc .container {
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  display: flex;
   gap: 2rem;
 }
-@media (max-width: 909px) {
+@media (max-width: 779px) {
   #showMuisc .container {
-    display: flex;
+    align-items: center;
     flex-direction: column;
   }
 }
 #showMuisc .container .cover {
-  height: auto;
+  height: 300px;
+  max-width: 400px;
   width: 100%;
 }
 #showMuisc .container .description {
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   padding: 2rem 0.4rem;
 }
+@media (max-width: 779px) {
+  #showMuisc .container .description {
+    text-align: center;
+  }
+}
 #showMuisc .container .description h1 {
-  font-size: 2.3rem;
+  font-size: 2.1rem;
+}
+#showMuisc .container .description h2 {
+  color: #e69d00;
 }
 #showMuisc .container .description ul {
-  align-items: center;
+  flex-direction: column;
   gap: 1.7rem;
   margin: 1.5rem 0;
 }
-#showMuisc .container .description ul li {
-  background: #6b6767;
-  padding: 0.6rem 1rem;
+@media (max-width: 779px) {
+  #showMuisc .container .description ul {
+    justify-content: center;
+  }
 }
-#showMuisc .container .description ul h2 {
-  font-family: sans-serif !important;
+#showMuisc .container .description ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+#showMuisc .container .description ul li .desc {
+  font-weight: bold;
   font-size: 1.2rem;
 }
-#showMuisc .container .description ul h2 span {
-  margin-left: 0.3rem;
+#showMuisc .container .description ul li .resp {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #e69d00;
 }
-#showMuisc .container .description p {
-  font-size: 1.3rem;
+#showMuisc .container .description ul li .d {
+  font-size: 1.4rem;
+}
+#showMuisc .container .description ul li p {
+  font-size: 1.2rem;
   line-height: 2.5rem;
+}
+#showMuisc .container .description #tags .container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: row;
+}
+@media (max-width: 779px) {
+  #showMuisc .container .description #tags .container {
+    align-items: center;
+    justify-content: center;
+  }
+}
+#showMuisc .container .description #tags .container a {
+  color: #fff;
+  padding: 0.6rem 0.9rem;
+  font-size: 1.2rem;
+  border-radius: 0.8rem;
+  font-weight: bold;
 }
 
 .button-container {
@@ -553,7 +618,7 @@ section {
   color: #fff;
   font-weight: bold;
   font-size: 1.2rem;
-  margin: 0 2rem;
+  margin: 2rem 0;
 }
 
 /*# sourceMappingURL=global.css.map */
